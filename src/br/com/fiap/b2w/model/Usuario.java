@@ -61,7 +61,7 @@ public class Usuario {
 
 	public String consultaPerfil() {
 		return "Usuario: " + this.login + " \nSenha: " + this.senha + "\nNickname: " + this.nickname + "\nCargo: "
-				+ this.cargo + "\n";
+				+ this.cargo;
 	}
 
 }

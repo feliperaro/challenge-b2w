@@ -54,7 +54,7 @@ public class Interface {
 
 	public void inicio(Interface ui, Usuario gestor, Usuario colaborador) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Entre no perfil desejado");
+		System.out.println("\nEntre no perfil desejado");
 		char resp = 'S';
 		while (resp == 'S') {
 			System.out.print("\nLogin: ");
@@ -84,7 +84,7 @@ public class Interface {
 		Scanner sc = new Scanner(System.in);
 		boolean ficaNoPerfil = true;
 		while (ficaNoPerfil) {
-			System.out.println("O que você procura? ");
+			System.out.println("\nO que você procura? ");
 			System.out.println("Ver perfil - 1");
 			System.out.println("Ver tarefas - 2");
 			System.out.println("Sair do perfil - 3");
@@ -97,11 +97,11 @@ public class Interface {
 					System.out.println(gestor.paraGestor().consultaTarefa());
 
 					System.out.println("\nCrie uma tarefa ");
+					sc.nextLine();
 					System.out.print("O que fazer: ");
 					String tarefa = sc.nextLine();
 
-					System.out.println("\nPontuação: ");
-					sc.nextLine();
+					System.out.println("Pontuação: ");
 					int pontuacao = sc.nextInt();
 
 					Tarefas tare = new Tarefas(tarefa, pontuacao);
@@ -124,7 +124,7 @@ public class Interface {
 		Scanner sc = new Scanner(System.in);
 		boolean ficaNoPerfil = true;
 		while (ficaNoPerfil) {
-			System.out.println("O que você procura? ");
+			System.out.println("\nO que você procura? ");
 			System.out.println("Ver perfil - 1");
 			System.out.println("Ver tarefas - 2");
 			System.out.println("Sair do perfil - 3");
@@ -137,8 +137,20 @@ public class Interface {
 					System.out.println(colaborador.paraColaborador().consultaTarefa());
 
 				} else {
+					char concluido = 'N';
 					System.out.println(gestor.paraGestor().consultaTarefa());
-					
+					System.out.println("Tarefa foi concluida? (S/N) ");
+					concluido = sc.next().toUpperCase().charAt(0);
+
+					if (concluido == 'S') {
+						colaborador.paraColaborador().concluirTarefa(gestor.paraGestor().getTarefa(), true, gestor);
+						gestor.paraGestor().consultaTarefa();
+					} else if (concluido == 'N') {
+						colaborador.paraColaborador().concluirTarefa(gestor.paraGestor().getTarefa(), false, gestor);
+					} else {
+						System.out.println("Opção invalida! ");
+					}
+
 				}
 			} else if (resposta == 3) {
 				ficaNoPerfil = false;
@@ -146,7 +158,5 @@ public class Interface {
 			}
 		}
 		sc.close();
-
 	}
-
 }

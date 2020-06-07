@@ -34,10 +34,10 @@ public class Gestor extends Cargo {
 	
 	public String consultaTarefa() {
 		if (this.tarefa != null) {
-			return "Existem tarefas a serem cumpridas\n" + this.getTarefa();
+			return "\nExistem tarefas a serem cumpridas" + this.getTarefa();
 		}
 		else {
-			return "Você não tem tarefas a cumprir";
+			return "\nNão existem tarefas a serem cumpridas";
 		}
 	}
 

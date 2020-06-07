@@ -26,11 +26,14 @@ public class Colaborador extends Cargo {
 		this.setTarefa(tarefa);
 	}
 
-	public boolean concluirTarefa(Tarefas tarefa, boolean concluida) {
+	public boolean concluirTarefa(Tarefas tarefa, boolean concluida, Usuario gestor) {
 		if (concluida) {
 			this.setTarefa(null);
+			gestor.paraGestor().setTarefa(null);
 			return true;
 		} else {
+			this.setTarefa(tarefa);
+			gestor.paraGestor().setTarefa(tarefa);
 			return false;
 		}
 			
@@ -38,7 +41,7 @@ public class Colaborador extends Cargo {
 
 	public String consultaTarefa() {
 		if (this.tarefa != null) {
-			return "Você tem tarefas a cumprir\n" + this.getTarefa();
+			return "Você tem tarefas a cumprir\n" + this.tarefa;
 		}
 		else {
 			return "Você não tem tarefas a cumprir";
