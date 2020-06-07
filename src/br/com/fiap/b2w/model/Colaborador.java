@@ -27,8 +27,13 @@ public class Colaborador extends Cargo {
 	}
 
 	public boolean concluirTarefa(Tarefas tarefa, boolean concluida) {
-		this.setTarefa(null);
-		return true;
+		if (concluida) {
+			this.setTarefa(null);
+			return true;
+		} else {
+			return false;
+		}
+			
 	}
 
 	public String consultaTarefa() {

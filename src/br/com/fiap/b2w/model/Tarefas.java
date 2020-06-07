@@ -28,7 +28,7 @@ public class Tarefas {
 
 	@Override
 	public String toString() {
-		return "Tarefa:\n" + this.tarefa + " valendo " + this.pontuacao + " pontos.";
+		return "\nTarefa: " + this.tarefa + "\nValendo " + this.pontuacao + " pontos.";
 	}
 
 }

@@ -27,14 +27,14 @@ public class Gestor extends Cargo {
 		this.user = user;
 	}
 
-	public void passarTarefa(Tarefas tarefa, Colaborador colab) {
+	public void criarTarefa(Tarefas tarefa, Colaborador colab) {
 		colab.recebeTarefa(this, tarefa);
-
+		this.tarefa = tarefa;
 	}
 	
 	public String consultaTarefa() {
 		if (this.tarefa != null) {
-			return "Você tem tarefas a cumprir\n" + this.getTarefa();
+			return "Existem tarefas a serem cumpridas\n" + this.getTarefa();
 		}
 		else {
 			return "Você não tem tarefas a cumprir";
